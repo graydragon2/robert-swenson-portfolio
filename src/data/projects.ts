@@ -49,6 +49,9 @@ export interface Project {
   conceptArt?: boolean;
   image?: string;
   imageAlt?: string;
+  /** "contain" letterboxes real application screenshots so no interface
+   *  content is cropped; omit for artwork/concept renders that can safely fill the frame. */
+  imageFit?: "cover" | "contain";
 }
 
 export const projects: Project[] = [
@@ -204,6 +207,7 @@ export const projects: Project[] = [
     image: "/portfolio/projects/home-security.png",
     imageAlt:
       "Home Security dashboard: security status HOME with automatic presence detection, 5/5 cameras online, 0 active alerts, and AI verification controls.",
+    imageFit: "contain",
   },
   {
     slug: "network-command-center",
@@ -273,6 +277,7 @@ export const projects: Project[] = [
     image: "/portfolio/projects/network-command-center.png",
     imageAlt:
       "Network Command Center dashboard: network score 100/Excellent, AI-generated network analyst summary, and healthy status across internet, DNS, devices, and security.",
+    imageFit: "contain",
   },
   {
     slug: "homelab",

@@ -7,7 +7,13 @@ interface ScreenshotFrameProps {
   src?: string;
   alt: string;
   label: string;
-  aspect?: "video" | "wide" | "cinematic" | "editorial";
+  aspect?: "video" | "wide" | "cinematic" | "editorial" | "supporting";
+  /** "default" keeps the bordered card treatment; "artwork" de-cards the
+   *  frame (shadow + radius only) for flagship/case-study hero imagery. */
+  frame?: "default" | "artwork";
+  /** "contain" letterboxes real application screenshots on a dark backing
+   *  so no interface content is cropped; "cover" (default) fills the frame. */
+  fit?: "cover" | "contain";
   glow?: boolean;
   priority?: boolean;
 }
@@ -19,6 +25,9 @@ const ratios: Record<NonNullable<ScreenshotFrameProps["aspect"]>, string> = {
   // Taller on mobile so real screenshots read large and legible; widens
   // into an editorial banner once there's room for it alongside copy.
   editorial: "aspect-[4/3] sm:aspect-[16/10] lg:aspect-[21/9]",
+  // Taller, closer-to-square ratio for supporting-project cards, so the
+  // artwork reads as visually dominant against a compact text block.
+  supporting: "aspect-[4/3]",
 };
 
 export default function ScreenshotFrame({
@@ -26,11 +35,14 @@ export default function ScreenshotFrame({
   alt,
   label,
   aspect = "video",
+  frame = "default",
+  fit = "cover",
   glow = false,
   priority = false,
 }: ScreenshotFrameProps) {
   const [errored, setErrored] = useState(false);
   const showImage = Boolean(src) && !errored;
+  const bordered = frame === "default";
 
   return (
     <div className="relative">
@@ -41,7 +53,9 @@ export default function ScreenshotFrame({
         />
       )}
       <div
-        className={`relative ${ratios[aspect]} w-full overflow-hidden rounded-[14px] border border-border bg-bg-raised shadow-[0_30px_80px_-30px_rgba(0,0,0,0.65)]`}
+        className={`relative ${ratios[aspect]} w-full overflow-hidden rounded-[14px] bg-bg-raised shadow-[0_30px_80px_-30px_rgba(0,0,0,0.65)] ${
+          bordered ? "border border-border" : ""
+        }`}
       >
         {showImage ? (
           <Image
@@ -49,7 +63,7 @@ export default function ScreenshotFrame({
             alt={alt}
             fill
             sizes="(min-width: 1024px) 900px, 100vw"
-            className="object-cover"
+            className={fit === "contain" ? "object-contain" : "object-cover"}
             priority={priority}
             loading={priority ? undefined : "lazy"}
             onError={() => setErrored(true)}
@@ -57,10 +71,12 @@ export default function ScreenshotFrame({
         ) : (
           <AwaitingScreenshot label={label} />
         )}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 shadow-[inset_0_0_0_1px_rgba(119,197,138,0.12)]"
-        />
+        {bordered && (
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 shadow-[inset_0_0_0_1px_rgba(119,197,138,0.12)]"
+          />
+        )}
       </div>
     </div>
   );

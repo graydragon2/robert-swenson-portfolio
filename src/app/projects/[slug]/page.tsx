@@ -51,7 +51,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
 
   return (
     <div>
-      {/* VISUAL PROOF — large cinematic system banner leads the page */}
+      {/* Editorial header — title, status, and context lead; artwork follows as evidence */}
       <div className="relative overflow-hidden bg-bg-deep">
         <div
           aria-hidden="true"
@@ -65,7 +65,52 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
             ← Back to Projects
           </Link>
 
-          <div className="mt-6 pb-16">
+          <div className="mt-8 max-w-2xl">
+            <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent-bright">
+              {project.subtitle}
+            </p>
+            <h1 className="mt-3 text-4xl font-bold tracking-tight text-text-main sm:text-5xl lg:text-6xl">
+              {project.title}
+            </h1>
+            <p className="mt-5 text-lg leading-relaxed text-text-muted">
+              {project.summary}
+            </p>
+
+            <div className="mt-6 flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <Tag key={tag}>{tag}</Tag>
+              ))}
+            </div>
+
+            <dl className="mt-8 grid grid-cols-3 gap-4 border-t border-border pt-6 sm:max-w-md">
+              <div>
+                <dt className="font-mono text-[10px] uppercase tracking-widest text-text-muted">
+                  Status
+                </dt>
+                <dd className="mt-1 text-sm font-medium text-text-main">
+                  {project.status}
+                </dd>
+              </div>
+              <div>
+                <dt className="font-mono text-[10px] uppercase tracking-widest text-text-muted">
+                  Host
+                </dt>
+                <dd className="mt-1 text-sm font-medium text-text-main">
+                  {project.host}
+                </dd>
+              </div>
+              <div>
+                <dt className="font-mono text-[10px] uppercase tracking-widest text-text-muted">
+                  Deployment
+                </dt>
+                <dd className="mt-1 text-sm font-medium text-text-main">
+                  {project.deployment}
+                </dd>
+              </div>
+            </dl>
+          </div>
+
+          <div className="mt-12 pb-16 sm:mt-14">
             <ScreenshotFrame
               src={project.image}
               alt={project.imageAlt ?? `${project.title} interface`}
@@ -75,6 +120,8 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
                   : `${project.title} · SCREENSHOT COMING SOON`
               }
               aspect="editorial"
+              frame="artwork"
+              fit={project.imageFit}
               glow
               priority
             />
@@ -86,59 +133,6 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
                 Personal Intelligence System.
               </p>
             )}
-          </div>
-        </div>
-      </div>
-
-      <div className="border-b border-border bg-bg">
-        <div className="mx-auto max-w-5xl px-4 py-14 sm:px-6 lg:px-8">
-          <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent-bright">
-            {project.subtitle}
-          </p>
-          <h1 className="mt-3 text-4xl font-bold tracking-tight text-text-main sm:text-5xl lg:text-6xl">
-            {project.title}
-          </h1>
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-text-muted">
-            {project.summary}
-          </p>
-
-          <div className="mt-6 flex flex-wrap gap-2">
-            {project.tags.map((tag) => (
-              <Tag key={tag}>{tag}</Tag>
-            ))}
-          </div>
-
-          <dl className="mt-8 grid grid-cols-3 gap-4 border-t border-border pt-6 sm:max-w-md">
-            <div>
-              <dt className="font-mono text-[10px] uppercase tracking-widest text-text-muted">
-                Status
-              </dt>
-              <dd className="mt-1 text-sm font-medium text-text-main">
-                {project.status}
-              </dd>
-            </div>
-            <div>
-              <dt className="font-mono text-[10px] uppercase tracking-widest text-text-muted">
-                Host
-              </dt>
-              <dd className="mt-1 text-sm font-medium text-text-main">
-                {project.host}
-              </dd>
-            </div>
-            <div>
-              <dt className="font-mono text-[10px] uppercase tracking-widest text-text-muted">
-                Deployment
-              </dt>
-              <dd className="mt-1 text-sm font-medium text-text-main">
-                {project.deployment}
-              </dd>
-            </div>
-          </dl>
-
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Button href="/projects" variant="outline">
-              Back to Projects
-            </Button>
           </div>
         </div>
       </div>

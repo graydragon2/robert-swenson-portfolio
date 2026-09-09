@@ -28,7 +28,7 @@ export default function ProjectCard({
               ? `${project.title} · SYSTEM INTERFACE`
               : `${project.title} · SCREENSHOT COMING SOON`
           }
-          aspect="video"
+          aspect="supporting"
         />
         <div className="flex flex-1 flex-col p-6">
           <div className="flex items-start justify-between gap-4">
@@ -45,7 +45,7 @@ export default function ProjectCard({
           <h3 className="mt-2 text-lg font-semibold text-text-main">
             {project.title}
           </h3>
-          <p className="mt-3 flex-1 text-sm leading-relaxed text-text-muted">
+          <p className="mt-3 line-clamp-3 flex-1 text-sm leading-relaxed text-text-muted">
             {project.description}
           </p>
           <div className="mt-5 flex flex-wrap gap-2">

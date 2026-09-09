@@ -15,23 +15,40 @@ export default function Home() {
     <>
       <Hero />
 
-      <section className="relative bg-bg-deep py-24 sm:py-32">
+      <section className="relative bg-bg-deep pb-8 pt-24 sm:pb-10 sm:pt-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
-            eyebrow="Featured Work"
+            eyebrow="Featured Systems"
             title="Systems built to solve real problems"
             description="Three platforms designed, built, and currently operated end to end — spanning personal AI infrastructure, home security, and network management."
           />
-
-          <div className="mt-20 flex flex-col gap-28 sm:gap-40">
-            {featured.map((project, i) => (
-              <ProjectShowcase key={project.slug} project={project} index={i} />
-            ))}
-          </div>
         </div>
       </section>
 
-      <section className="relative flex min-h-[260px] items-center overflow-hidden bg-bg-deep sm:min-h-[360px] lg:min-h-[460px]">
+      {featured.map((project, i) => {
+        const isNetworkCommandCenter = project.slug === "network-command-center";
+        const tone =
+          project.slug === "home-security" ? "bg-bg" : "bg-bg-deep";
+
+        return (
+          <section
+            key={project.slug}
+            className={`relative overflow-hidden ${tone} py-12 sm:py-16 lg:py-20`}
+          >
+            {isNetworkCommandCenter && (
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-[url('/portfolio/backgrounds/topographic-background.svg')] bg-cover bg-center opacity-10"
+              />
+            )}
+            <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <ProjectShowcase project={project} index={i} />
+            </div>
+          </section>
+        );
+      })}
+
+      <section className="relative flex min-h-[320px] items-center overflow-hidden bg-bg-deep sm:min-h-[400px] lg:min-h-[520px]">
         <div aria-hidden="true" className="absolute inset-0">
           <Image
             src="/portfolio/backgrounds/section-divider-background.png"
@@ -40,7 +57,7 @@ export default function Home() {
             sizes="100vw"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_65%_at_50%_50%,rgba(5,10,8,0.55)_0%,rgba(5,10,8,0.15)_75%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_65%_at_50%_50%,rgba(5,10,8,0.4)_0%,rgba(5,10,8,0.08)_75%)]" />
         </div>
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <p className="text-3xl font-medium italic leading-relaxed text-text-main sm:text-4xl lg:text-5xl">

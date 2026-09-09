@@ -33,8 +33,8 @@ export default function Hero() {
       </div>
 
       {/* floating quote card, upper right */}
-      <div className="absolute right-4 top-24 z-10 hidden max-w-[15rem] rounded-[10px] border border-border/70 bg-bg-deep/40 px-4 py-3 backdrop-blur-sm sm:right-6 sm:top-28 md:block lg:right-10">
-        <p className="text-xs italic leading-relaxed text-text-main/90">
+      <div className="absolute right-4 top-24 z-10 hidden max-w-[15rem] sm:right-6 sm:top-28 md:block lg:right-10">
+        <p className="text-xs italic leading-relaxed text-text-main/90 [text-shadow:0_2px_12px_rgba(5,10,8,0.8)]">
           {site.quote.map((line, i) => (
             <span key={i} className="block">
               {line}
