@@ -199,6 +199,9 @@ export const projects: Project[] = [
       "Expand known-vehicle and authorized-visitor handling for less common scenarios (deliveries, service visits).",
       "Tighten AI verification accuracy to further reduce false suppressions and false escalations.",
     ],
+    image: "/portfolio/projects/home-security.png",
+    imageAlt:
+      "Home Security dashboard: security status HOME with automatic presence detection, 5/5 cameras online, 0 active alerts, and AI verification controls.",
   },
   {
     slug: "network-command-center",
@@ -265,6 +268,9 @@ export const projects: Project[] = [
       "Extend topology visibility as more nodes and services are added.",
       "Continue consolidating the command-center view as the single source of truth for infrastructure state.",
     ],
+    image: "/portfolio/projects/network-command-center.png",
+    imageAlt:
+      "Network Command Center dashboard: network score 100/Excellent, AI-generated network analyst summary, and healthy status across internet, DNS, devices, and security.",
   },
   {
     slug: "homelab",
