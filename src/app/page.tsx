@@ -101,7 +101,7 @@ export default function Home() {
             <img
               src="/portfolio/diagrams/infrastructure-topology.svg"
               alt="Infrastructure topology: security-core, graydragon-ai, pi4-core, and pi3b-river connected through a private WireGuard network."
-              className="h-auto w-full min-w-[720px]"
+              className="h-auto w-full lg:min-w-[720px]"
             />
           </div>
 

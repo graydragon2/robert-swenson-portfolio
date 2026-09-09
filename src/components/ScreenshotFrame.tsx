@@ -14,6 +14,13 @@ interface ScreenshotFrameProps {
   /** "contain" letterboxes real application screenshots on a dark backing
    *  so no interface content is cropped; "cover" (default) fills the frame. */
   fit?: "cover" | "contain";
+  /** "screenshot" (default) leaves `fit` in full control at every
+   *  breakpoint — this is the original, unchanged behavior for real
+   *  application screenshots. "diagram" forces object-contain below lg
+   *  only, so wide technical diagrams are never cropped on mobile/tablet,
+   *  while `fit` still governs the desktop (lg+) presentation exactly as
+   *  before. This is opt-in per caller — it does not change the default. */
+  media?: "screenshot" | "diagram";
   glow?: boolean;
   priority?: boolean;
 }
@@ -37,12 +44,21 @@ export default function ScreenshotFrame({
   aspect = "video",
   frame = "default",
   fit = "cover",
+  media = "screenshot",
   glow = false,
   priority = false,
 }: ScreenshotFrameProps) {
   const [errored, setErrored] = useState(false);
   const showImage = Boolean(src) && !errored;
   const bordered = frame === "default";
+  const objectFitClass =
+    media === "diagram"
+      ? fit === "contain"
+        ? "object-contain"
+        : "object-contain lg:object-cover"
+      : fit === "contain"
+        ? "object-contain"
+        : "object-cover";
 
   return (
     <div className="relative">
@@ -63,7 +79,7 @@ export default function ScreenshotFrame({
             alt={alt}
             fill
             sizes="(min-width: 1024px) 900px, 100vw"
-            className={fit === "contain" ? "object-contain" : "object-cover"}
+            className={objectFitClass}
             priority={priority}
             loading={priority ? undefined : "lazy"}
             onError={() => setErrored(true)}

@@ -30,7 +30,7 @@ export default function ProjectCard({
           }
           aspect="supporting"
         />
-        <div className="flex flex-1 flex-col p-6">
+        <div className="flex flex-1 flex-col p-[21px] lg:p-6">
           <div className="flex items-start justify-between gap-4">
             <p className="font-mono text-[11px] uppercase tracking-wide text-accent-bright">
               {project.subtitle}
@@ -48,7 +48,7 @@ export default function ProjectCard({
           <p className="mt-3 line-clamp-3 flex-1 text-sm leading-relaxed text-text-muted">
             {project.description}
           </p>
-          <div className="mt-5 flex flex-wrap gap-2">
+          <div className="mt-[17px] flex flex-wrap gap-2 lg:mt-5">
             {project.tags.map((tag) => (
               <Tag key={tag}>{tag}</Tag>
             ))}

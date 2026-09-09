@@ -52,6 +52,11 @@ export interface Project {
   /** "contain" letterboxes real application screenshots so no interface
    *  content is cropped; omit for artwork/concept renders that can safely fill the frame. */
   imageFit?: "cover" | "contain";
+  /** "diagram" marks the hero image as a technical diagram (as opposed to a
+   *  real application screenshot) — on the case-study page this guarantees
+   *  the full diagram is visible on mobile/tablet without cropping, without
+   *  changing desktop presentation or affecting real screenshots. */
+  mediaType?: "diagram";
   /** Exact document <title> for this project's page (used as-is, bypassing
    *  the site-wide title template) and for social share cards. */
   metaTitle?: string;
@@ -407,6 +412,7 @@ export const projects: Project[] = [
     image: "/portfolio/projects/homelab.png",
     imageAlt:
       "Homelab node overview: security-core, pi4-core, pi3b-river, and graydragon-ai, each shown online with their core responsibilities.",
+    mediaType: "diagram",
     metaTitle: "Homelab & Multi-Node Infrastructure | Robert F. Swenson III",
     metaDescription:
       "A self-hosted multi-node Linux infrastructure environment using WireGuard, Docker, KVM, monitoring, security tooling, and remote systems integration.",
@@ -480,6 +486,7 @@ export const projects: Project[] = [
     image: "/portfolio/projects/local-ai.png",
     imageAlt:
       "Local AI Gateway: graydragon-ai node running Qwen3-8B Q3_K_L on a GTX 1080 8GB, serving local, private, GPU-accelerated inference.",
+    mediaType: "diagram",
     metaTitle: "Local AI Infrastructure | Robert F. Swenson III",
     metaDescription:
       "Self-hosted GPU-based AI infrastructure using llama.cpp, CUDA, Qwen, and an OpenAI-compatible API for private local inference and system integration.",
@@ -537,6 +544,7 @@ export const projects: Project[] = [
     image: "/portfolio/projects/mortgage-intelligence.png",
     imageAlt:
       "Mortgage Intelligence dashboard: 30-year rate trend line against a refinance target, with current average, target, and tracked balance.",
+    mediaType: "diagram",
     metaTitle: "Mortgage Intelligence & Rate Monitoring | Robert F. Swenson III",
     metaDescription:
       "An automated mortgage intelligence system that monitors lending conditions, tracks rate movement, and surfaces decision-relevant changes.",

@@ -6,6 +6,11 @@ interface CaseStudySectionProps {
   /** "tight" trims only the desktop (lg+) vertical rhythm between chapters;
    *  mobile/tablet spacing is unchanged either way. Opt-in per case study. */
   spacing?: "default" | "tight";
+  /** True for the first section in a case study only — tightens just the
+   *  gap between the sticky nav and this section's content on phone widths
+   *  (below sm). Tablet (sm+) and desktop (lg+) padding are untouched, and
+   *  every later section's own spacing/rhythm is unaffected. */
+  firstSection?: boolean;
 }
 
 export default function CaseStudySection({
@@ -14,9 +19,13 @@ export default function CaseStudySection({
   heading,
   children,
   spacing = "default",
+  firstSection = false,
 }: CaseStudySectionProps) {
+  const basePt = firstSection ? "pt-16" : "pt-20";
   const paddingClass =
-    spacing === "tight" ? "py-20 sm:py-24 lg:py-[5.25rem]" : "py-20 sm:py-24";
+    spacing === "tight"
+      ? `${basePt} sm:pt-24 pb-20 sm:pb-24 lg:py-[5.25rem]`
+      : `${basePt} sm:pt-24 pb-20 sm:pb-24`;
 
   return (
     <section id={id} className={`scroll-mt-32 border-t border-border ${paddingClass}`}>
