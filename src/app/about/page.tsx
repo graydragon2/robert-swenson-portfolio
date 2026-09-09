@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import SectionHeader from "@/components/SectionHeader";
 import Button from "@/components/Button";
+import MountainBackdrop from "@/components/MountainBackdrop";
 
 export const metadata: Metadata = {
   title: "About",
@@ -18,10 +18,23 @@ const questions = [
 
 export default function AboutPage() {
   return (
-    <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
-      <SectionHeader eyebrow="About" title="Same person. New chapter." />
+    <div>
+      <section className="relative flex min-h-[55vh] items-end overflow-hidden bg-bg-deep">
+        <MountainBackdrop />
+        <div className="relative z-10 mx-auto w-full max-w-3xl px-4 pb-16 pt-32 sm:px-6 lg:px-8">
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-accent-bright">
+            About
+          </p>
+          <h1 className="mt-3 text-4xl font-bold leading-[1.02] tracking-tight text-text-main sm:text-5xl lg:text-6xl">
+            SAME PERSON.
+            <br />
+            NEW CHAPTER.
+          </h1>
+        </div>
+      </section>
 
-      <div className="mt-10 flex flex-col gap-6 text-lg leading-relaxed text-text-muted">
+      <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
+      <div className="flex flex-col gap-6 text-lg leading-relaxed text-text-muted">
         <p>
           Robert F. Swenson III is a systems builder, technical
           problem-solver, and lifelong learner.
@@ -64,6 +77,7 @@ export default function AboutPage() {
         <Button href="/resume" variant="outline">
           View Resume
         </Button>
+      </div>
       </div>
     </div>
   );

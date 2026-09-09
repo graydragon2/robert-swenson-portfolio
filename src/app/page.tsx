@@ -31,9 +31,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-border bg-bg-raised py-20 sm:py-28">
-        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <p className="text-2xl font-medium italic leading-relaxed text-text-main sm:text-3xl lg:text-4xl">
+      <section className="relative overflow-hidden bg-bg-raised py-24 sm:py-32">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_50%_50%,rgba(119,197,138,0.06),transparent_70%)]"
+        />
+        <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+          <p className="text-3xl font-medium italic leading-relaxed text-text-main sm:text-4xl lg:text-5xl">
             {site.quote.join(" ")}
           </p>
         </div>

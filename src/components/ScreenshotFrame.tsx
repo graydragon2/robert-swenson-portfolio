@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { projectMockups } from "@/components/mockups";
 
 interface ScreenshotFrameProps {
   src?: string;
@@ -10,6 +11,7 @@ interface ScreenshotFrameProps {
   aspect?: "video" | "wide" | "cinematic";
   glow?: boolean;
   accentSeed?: number;
+  slug?: string;
 }
 
 const ratios: Record<NonNullable<ScreenshotFrameProps["aspect"]>, string> = {
@@ -25,9 +27,11 @@ export default function ScreenshotFrame({
   aspect = "video",
   glow = false,
   accentSeed = 0,
+  slug,
 }: ScreenshotFrameProps) {
   const [errored, setErrored] = useState(false);
   const showImage = Boolean(src) && !errored;
+  const Mockup = slug ? projectMockups[slug] : undefined;
 
   return (
     <div className="relative">
@@ -49,6 +53,13 @@ export default function ScreenshotFrame({
             className="object-cover"
             onError={() => setErrored(true)}
           />
+        ) : Mockup ? (
+          <div className="absolute inset-0 flex flex-col">
+            <WindowChrome label={label} />
+            <div className="min-h-0 flex-1">
+              <Mockup />
+            </div>
+          </div>
         ) : (
           <SystemInterfacePlaceholder label={label} seed={accentSeed} />
         )}
@@ -57,6 +68,23 @@ export default function ScreenshotFrame({
           className="pointer-events-none absolute inset-0 shadow-[inset_0_0_0_1px_rgba(119,197,138,0.12)]"
         />
       </div>
+    </div>
+  );
+}
+
+function WindowChrome({ label }: { label: string }) {
+  return (
+    <div className="flex flex-shrink-0 items-center gap-2 border-b border-border/80 bg-bg-deep/70 px-4 py-2">
+      <span className="h-2 w-2 rounded-full bg-text-muted/30" />
+      <span className="h-2 w-2 rounded-full bg-text-muted/30" />
+      <span className="h-2 w-2 rounded-full bg-text-muted/30" />
+      <span className="ml-2 truncate font-mono text-[10px] uppercase tracking-widest text-text-muted/70">
+        {label}
+      </span>
+      <span className="ml-auto flex flex-shrink-0 items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-accent-bright/80">
+        <span className="h-1.5 w-1.5 rounded-full bg-accent-bright shadow-[0_0_8px_rgba(119,197,138,0.9)]" />
+        live
+      </span>
     </div>
   );
 }

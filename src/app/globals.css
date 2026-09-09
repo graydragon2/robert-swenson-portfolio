@@ -91,6 +91,18 @@ body {
   }
 }
 
+/* Restrained animated flow along topology connection lines */
+.topo-flow {
+  opacity: 0.85;
+  animation: topo-flow-move 3.5s linear infinite;
+}
+
+@keyframes topo-flow-move {
+  to {
+    stroke-dashoffset: -32;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

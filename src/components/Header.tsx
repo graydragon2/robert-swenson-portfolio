@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { nav, site } from "@/data/site";
 import MobileMenu from "@/components/MobileMenu";
+import SiteMark from "@/components/SiteMark";
 
 export default function Header() {
   const pathname = usePathname();
@@ -15,10 +16,13 @@ export default function Header() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="font-sans text-sm font-semibold tracking-[0.12em] text-text-main"
+          className="flex items-center gap-2.5"
           onClick={() => setOpen(false)}
         >
-          {site.name.toUpperCase()}
+          <SiteMark className="h-7 w-7" />
+          <span className="font-sans text-sm font-semibold tracking-[0.12em] text-text-main">
+            {site.name.toUpperCase()}
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">

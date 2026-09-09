@@ -54,9 +54,6 @@ export const metadata: Metadata = {
     title: `${site.name} — Systems, Automation, AI, Networking, Security`,
     description: site.tagline,
   },
-  icons: {
-    icon: "/favicon.ico",
-  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -33,6 +33,7 @@ export default function ProjectShowcase({
             aspect="wide"
             glow
             accentSeed={index}
+            slug={project.slug}
           />
         </Link>
       </div>

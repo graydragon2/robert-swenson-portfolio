@@ -74,6 +74,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
               aspect="cinematic"
               glow
               accentSeed={index}
+              slug={project.slug}
             />
           </div>
         </div>

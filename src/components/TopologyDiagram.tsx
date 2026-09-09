@@ -5,6 +5,7 @@ interface TopoNode {
   r: number;
   label: string;
   sublabel?: string;
+  sublabel2?: string;
   icon: IconKey;
   status?: boolean;
 }
@@ -51,7 +52,8 @@ const nodes: TopoNode[] = [
     y: 350,
     r: 28,
     label: "SECURITY-CORE",
-    sublabel: "Ubuntu Server",
+    sublabel: "Security • Monitoring",
+    sublabel2: "Docker • KVM",
     icon: "server",
     status: true,
   },
@@ -61,7 +63,8 @@ const nodes: TopoNode[] = [
     y: 350,
     r: 28,
     label: "GRAYDRAGON-AI",
-    sublabel: "GTX 1080 · CUDA",
+    sublabel: "Local AI Inference",
+    sublabel2: "Qwen • llama.cpp",
     icon: "chip",
     status: true,
   },
@@ -71,7 +74,8 @@ const nodes: TopoNode[] = [
     y: 350,
     r: 28,
     label: "PI4-CORE",
-    sublabel: "WireGuard Server",
+    sublabel: "Network Core • VPN",
+    sublabel2: "WireGuard • Monitoring",
     icon: "router",
     status: true,
   },
@@ -82,6 +86,7 @@ const nodes: TopoNode[] = [
     r: 24,
     label: "PI3B-RIVER",
     sublabel: "Remote Node",
+    sublabel2: "Monitoring • Telemetry",
     icon: "antenna",
     status: true,
   },
@@ -91,6 +96,7 @@ const nodes: TopoNode[] = [
     y: 470,
     r: 18,
     label: "CAMERAS",
+    sublabel: "(Reolink)",
     icon: "camera",
   },
   {
@@ -99,6 +105,7 @@ const nodes: TopoNode[] = [
     y: 470,
     r: 18,
     label: "STORAGE",
+    sublabel: "(NAS)",
     icon: "database",
   },
   {
@@ -107,6 +114,7 @@ const nodes: TopoNode[] = [
     y: 470,
     r: 18,
     label: "CLOUD APIS",
+    sublabel: "(Gmail, Calendar)",
     icon: "cloud",
   },
   {
@@ -115,6 +123,7 @@ const nodes: TopoNode[] = [
     y: 470,
     r: 18,
     label: "CLIENTS",
+    sublabel: "(LAN / VPN)",
     icon: "monitor",
   },
 ];
@@ -143,15 +152,32 @@ function curvePath(a: TopoNode, b: TopoNode) {
   return `M ${a.x} ${a.y} C ${a.x} ${midY}, ${b.x} ${midY}, ${b.x} ${b.y}`;
 }
 
-export default function TopologyDiagram() {
+export default function TopologyDiagram({
+  title,
+  subtitle,
+}: {
+  title?: string;
+  subtitle?: string;
+}) {
   return (
-    <div className="relative w-full overflow-x-auto">
-      <svg
-        viewBox="0 0 1000 520"
-        className="h-auto w-full min-w-[680px]"
-        role="img"
-        aria-label="Network topology: internet through firewall and core network, fanning out to security-core, graydragon-ai, pi4-core, and remote node pi3b-river, with cameras, storage, cloud APIs, and clients."
-      >
+    <div className="relative w-full">
+      {title && (
+        <div className="mb-4 sm:absolute sm:mb-0 sm:left-1 sm:top-0 sm:z-10">
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent-bright">
+            {title}
+          </p>
+          {subtitle && (
+            <p className="mt-1 text-sm text-text-muted">{subtitle}</p>
+          )}
+        </div>
+      )}
+      <div className="w-full overflow-x-auto">
+        <svg
+          viewBox="0 0 1000 545"
+          className="h-auto w-full min-w-[680px]"
+          role="img"
+          aria-label="Network topology: internet through firewall and core network, fanning out to security-core, graydragon-ai, pi4-core, and remote node pi3b-river, with cameras, storage, cloud APIs, and clients."
+        >
         <defs>
           <filter id="topo-glow" x="-60%" y="-60%" width="220%" height="220%">
             <feGaussianBlur stdDeviation="4" result="blur" />
@@ -166,7 +192,7 @@ export default function TopologyDiagram() {
           </radialGradient>
         </defs>
 
-        <rect x="0" y="0" width="1000" height="520" fill="url(#topo-bg)" />
+        <rect x="0" y="0" width="1000" height="545" fill="url(#topo-bg)" />
 
         <g className="text-border" fill="none" stroke="currentColor" strokeWidth="1">
           {edges
@@ -188,6 +214,19 @@ export default function TopologyDiagram() {
                 className="text-accent-bright/30"
                 stroke="currentColor"
                 strokeDasharray="5 6"
+              />
+            ))}
+          {edges
+            .filter((e) => !e.dashed)
+            .map((e, i) => (
+              <path
+                key={`flow-${i}`}
+                d={curvePath(nodeById(e.from), nodeById(e.to))}
+                className="topo-flow text-accent-bright"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeDasharray="2 14"
+                strokeLinecap="round"
               />
             ))}
         </g>
@@ -251,9 +290,25 @@ export default function TopologyDiagram() {
                 {n.sublabel}
               </text>
             )}
+            {n.sublabel2 && (
+              <text
+                x={n.x}
+                y={n.y + n.r + 50}
+                textAnchor="middle"
+                className="fill-current text-text-muted/70"
+                style={{
+                  fontFamily: "var(--font-ibm-plex-mono)",
+                  fontSize: 9.5,
+                  letterSpacing: "0.03em",
+                }}
+              >
+                {n.sublabel2}
+              </text>
+            )}
           </g>
         ))}
-      </svg>
+        </svg>
+      </div>
     </div>
   );
 }
