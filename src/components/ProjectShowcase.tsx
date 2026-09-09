@@ -72,7 +72,7 @@ export default function ProjectShowcase({
           )}
           {String(index + 1).padStart(2, "0")} — {project.subtitle}
         </p>
-        <h3 className="mt-3 text-[2.5rem] font-bold leading-[1.05] tracking-tight text-text-main sm:text-5xl lg:text-[3.25rem]">
+        <h3 className="mt-3 text-[2.5rem] font-bold leading-[1.05] tracking-tight text-text-main sm:text-5xl lg:text-[3.65rem]">
           {project.title}
         </h3>
         <p className="mt-5 text-base leading-relaxed text-text-muted sm:text-lg">

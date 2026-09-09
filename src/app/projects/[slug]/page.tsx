@@ -49,6 +49,8 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
     notFound();
   }
 
+  const sectionSpacing = project.slug === "graydragon" ? "tight" : "default";
+
   return (
     <div>
       {/* Editorial header — title, status, and context lead; artwork follows as evidence */}
@@ -140,7 +142,12 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
       <CaseStudyNav sections={sections} />
 
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <CaseStudySection id="overview" label="Overview" heading="System Overview">
+        <CaseStudySection
+          id="overview"
+          label="Overview"
+          heading="System Overview"
+          spacing={sectionSpacing}
+        >
           <p className="text-base leading-relaxed text-text-muted">
             {project.description}
           </p>
@@ -170,7 +177,12 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
           )}
         </CaseStudySection>
 
-        <CaseStudySection id="problem" label="Problem" heading="The Problem">
+        <CaseStudySection
+          id="problem"
+          label="Problem"
+          heading="The Problem"
+          spacing={sectionSpacing}
+        >
           <ul className="flex flex-col gap-3">
             {project.problem.map((item, i) => (
               <li
@@ -188,6 +200,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
           id="requirements"
           label="Requirements"
           heading="What It Had to Do"
+          spacing={sectionSpacing}
         >
           <ul className="flex flex-col gap-3">
             {project.requirements.map((item, i) => (
@@ -206,13 +219,19 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
           id="architecture"
           label="Architecture"
           heading="How It's Structured"
+          spacing={sectionSpacing}
         >
           <div className="max-w-none overflow-x-auto rounded-[12px] border border-border bg-bg-raised p-6">
             <ArchitectureDiagram spec={project.architecture} />
           </div>
         </CaseStudySection>
 
-        <CaseStudySection id="build" label="Build" heading="Engineering the Build">
+        <CaseStudySection
+          id="build"
+          label="Build"
+          heading="Engineering the Build"
+          spacing={sectionSpacing}
+        >
           <div className="flex flex-col gap-4">
             {project.build.map((paragraph, i) => (
               <p
@@ -229,6 +248,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
           id="challenges"
           label="Challenges"
           heading="What Made It Hard"
+          spacing={sectionSpacing}
         >
           <ul className="flex flex-col gap-3">
             {project.challenges.map((item, i) => (
@@ -247,6 +267,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
           id="current-system"
           label="Current System"
           heading="Results — Where It Stands Today"
+          spacing={sectionSpacing}
         >
           <ul className="flex flex-col gap-3">
             {project.currentState.map((item, i) => (
@@ -265,6 +286,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
           id="whats-next"
           label="What's Next"
           heading="What's Next"
+          spacing={sectionSpacing}
         >
           <ul className="flex flex-col gap-3">
             {project.nextSteps.map((item, i) => (
