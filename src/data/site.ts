@@ -15,10 +15,13 @@ export const site = {
   philosophy: ["BUILD", "AUTOMATE", "SECURE", "LEARN", "IMPROVE", "REPEAT"],
 } as const;
 
-// Shared fallback social-card image for pages that don't generate their own
-// (project pages use their own dynamic opengraph-image/twitter-image route).
+// Shared fallback social-card image for pages that don't have their own
+// project-specific card. Static asset — Cloudflare Workers can't reliably
+// render next/og ImageResponse routes within production resource limits,
+// so social cards are pre-baked PNGs under /public rather than generated
+// at request time.
 export const socialImage = {
-  url: "/opengraph-image",
+  url: "/social/portfolio.png",
   width: 1200,
   height: 630,
   alt: `${site.name} — ${site.descriptor}`,

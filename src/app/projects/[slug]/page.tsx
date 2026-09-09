@@ -29,6 +29,12 @@ export async function generateMetadata({
   const title = project.metaTitle ?? `${project.title} | ${site.name}`;
   const description = project.metaDescription ?? project.summary;
   const url = `/projects/${project.slug}`;
+  const socialImage = {
+    url: `/social/${project.slug}.png`,
+    width: 1200,
+    height: 630,
+    alt: `${project.title} — ${site.name}`,
+  };
 
   return {
     title: { absolute: title },
@@ -42,11 +48,13 @@ export async function generateMetadata({
       title,
       description,
       siteName: site.name,
+      images: [socialImage],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: [socialImage.url],
     },
   };
 }
