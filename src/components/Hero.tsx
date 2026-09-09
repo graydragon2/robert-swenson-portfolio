@@ -1,11 +1,24 @@
+import Image from "next/image";
 import Button from "@/components/Button";
-import MountainBackdrop from "@/components/MountainBackdrop";
 import { site } from "@/data/site";
 
 export default function Hero() {
   return (
     <section className="relative isolate flex min-h-[100svh] flex-col justify-center overflow-hidden bg-bg-deep">
-      <MountainBackdrop />
+      <div aria-hidden="true" className="absolute inset-0">
+        <Image
+          src="/portfolio/backgrounds/hero-background.png"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        {/* legibility scrim: darker on the left/bottom where text sits */}
+        <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(5,10,8,0.8)_0%,rgba(5,10,8,0.5)_35%,rgba(5,10,8,0.15)_62%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(5,10,8,0.6)_0%,transparent_45%)]" />
+        <div className="bg-noise absolute inset-0 opacity-60" />
+      </div>
 
       {/* vertical philosophy strip, far left edge */}
       <div className="pointer-events-none absolute inset-y-0 left-3 z-10 hidden flex-col items-center justify-center gap-3 sm:left-6 md:flex">
@@ -30,12 +43,12 @@ export default function Hero() {
         </p>
       </div>
 
-      {/* grounding tagline, lower right */}
+      {/* grounding tagline, lower right — general region only, never a precise location */}
       <div className="absolute bottom-8 right-4 z-10 hidden text-right sm:right-6 md:block lg:right-10">
         <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-text-muted/60">
-          Same ground.
+          Homelab // South Georgia
           <br />
-          Further reach.
+          Systems online
         </p>
       </div>
 

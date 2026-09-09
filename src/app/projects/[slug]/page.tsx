@@ -49,8 +49,6 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
     notFound();
   }
 
-  const index = projects.findIndex((p) => p.slug === project.slug);
-
   return (
     <div>
       {/* VISUAL PROOF — large cinematic system banner leads the page */}
@@ -69,12 +67,16 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
 
           <div className="mt-6 pb-16">
             <ScreenshotFrame
-              alt={`${project.title} interface`}
-              label={`${project.title} · SYSTEM INTERFACE`}
+              src={project.image}
+              alt={project.imageAlt ?? `${project.title} interface`}
+              label={
+                project.image
+                  ? `${project.title} · SYSTEM INTERFACE`
+                  : `${project.title} · SCREENSHOT COMING SOON`
+              }
               aspect="cinematic"
               glow
-              accentSeed={index}
-              slug={project.slug}
+              priority
             />
           </div>
         </div>

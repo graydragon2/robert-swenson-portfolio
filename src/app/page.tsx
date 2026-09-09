@@ -2,7 +2,6 @@ import Hero from "@/components/Hero";
 import SectionHeader from "@/components/SectionHeader";
 import ProjectShowcase from "@/components/ProjectShowcase";
 import ProjectGrid from "@/components/ProjectGrid";
-import TopologyDiagram from "@/components/TopologyDiagram";
 import Button from "@/components/Button";
 import { getFeaturedProjects, getSecondaryProjects } from "@/data/projects";
 import { site } from "@/data/site";
@@ -34,7 +33,7 @@ export default function Home() {
       <section className="relative overflow-hidden bg-bg-raised py-24 sm:py-32">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_50%_50%,rgba(119,197,138,0.06),transparent_70%)]"
+          className="absolute inset-0 bg-[url('/portfolio/backgrounds/topographic-background.svg')] bg-cover bg-center opacity-25"
         />
         <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <p className="text-3xl font-medium italic leading-relaxed text-text-main sm:text-4xl lg:text-5xl">
@@ -69,8 +68,13 @@ export default function Home() {
             align="center"
           />
 
-          <div className="mt-16 rounded-[20px] border border-border bg-bg-raised/60 p-4 sm:p-10">
-            <TopologyDiagram />
+          <div className="mt-16 overflow-x-auto rounded-[20px] border border-border bg-bg-raised/60 p-4 sm:p-10">
+            {/* eslint-disable-next-line @next/next/no-img-element -- static vector diagram, sharp at any size */}
+            <img
+              src="/portfolio/diagrams/infrastructure-topology.svg"
+              alt="Infrastructure topology: security-core, graydragon-ai, pi4-core, and pi3b-river connected through a WireGuard mesh."
+              className="h-auto w-full min-w-[720px]"
+            />
           </div>
 
           <div className="mt-10 flex justify-center">

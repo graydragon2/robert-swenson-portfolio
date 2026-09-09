@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 1200">
+<rect width="2400" height="1200" fill="#07100d"/>
+<g stroke="#244f3b" stroke-width="8" fill="none">
+<path d="M1200 570 L480 300 M1200 570 L480 870 M1200 570 L1920 300 M1200 570 L1920 870"/>
+<path d="M480 300 L480 870 M1920 300 L1920 870" stroke-dasharray="18 18"/>
+</g>
+<g font-family="Arial,sans-serif">
+<g fill="#0f211a" stroke="#6fbf8b" stroke-width="6">
+<rect x="950" y="440" width="500" height="260" rx="40"/><rect x="210" y="180" width="540" height="240" rx="40"/>
+<rect x="210" y="750" width="540" height="240" rx="40"/><rect x="1650" y="180" width="540" height="240" rx="40"/>
+<rect x="1650" y="750" width="540" height="240" rx="40"/>
+</g>
+<g fill="#edf3ef" font-weight="700" text-anchor="middle">
+<text x="1200" y="535" font-size="48">WIREGUARD MESH</text><text x="1200" y="605" font-size="28" fill="#6fbf8b">SECURE PRIVATE NETWORK</text>
+<text x="480" y="275" font-size="42">security-core</text><text x="480" y="335" font-size="25" fill="#91a49a">Security • Docker • Observability</text>
+<text x="480" y="845" font-size="42">pi4-core</text><text x="480" y="905" font-size="25" fill="#91a49a">DNS • VPN • Monitoring</text>
+<text x="1920" y="275" font-size="42">graydragon-ai</text><text x="1920" y="335" font-size="25" fill="#91a49a">CUDA • Qwen • Inference API</text>
+<text x="1920" y="845" font-size="42">pi3b-river</text><text x="1920" y="905" font-size="25" fill="#91a49a">Remote telemetry • Exporters</text>
+</g></g></svg>

@@ -26,6 +26,8 @@ export default function ResumePage() {
         <SectionHeader eyebrow="Resume" title="Robert F. Swenson III" />
         {links.resumePdf ? (
           <Button href={links.resumePdf} variant="primary">
+            {/* eslint-disable-next-line @next/next/no-img-element -- fixed small vector icon */}
+            <img src="/portfolio/icons/icon-resume.svg" alt="" className="h-4 w-4" />
             Download Resume
           </Button>
         ) : (
@@ -33,6 +35,8 @@ export default function ResumePage() {
             title="A downloadable PDF will be added here."
             className="inline-flex cursor-not-allowed items-center justify-center gap-2 rounded-[10px] border border-border px-5 py-3 font-mono text-xs uppercase tracking-wide text-text-muted"
           >
+            {/* eslint-disable-next-line @next/next/no-img-element -- fixed small vector icon */}
+            <img src="/portfolio/icons/icon-resume.svg" alt="" className="h-4 w-4 opacity-60" />
             Download Resume — PDF Coming Soon
           </span>
         )}

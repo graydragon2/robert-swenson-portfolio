@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { projectMockups } from "@/components/mockups";
 
 interface ScreenshotFrameProps {
   src?: string;
@@ -10,8 +9,7 @@ interface ScreenshotFrameProps {
   label: string;
   aspect?: "video" | "wide" | "cinematic";
   glow?: boolean;
-  accentSeed?: number;
-  slug?: string;
+  priority?: boolean;
 }
 
 const ratios: Record<NonNullable<ScreenshotFrameProps["aspect"]>, string> = {
@@ -26,12 +24,10 @@ export default function ScreenshotFrame({
   label,
   aspect = "video",
   glow = false,
-  accentSeed = 0,
-  slug,
+  priority = false,
 }: ScreenshotFrameProps) {
   const [errored, setErrored] = useState(false);
   const showImage = Boolean(src) && !errored;
-  const Mockup = slug ? projectMockups[slug] : undefined;
 
   return (
     <div className="relative">
@@ -51,17 +47,12 @@ export default function ScreenshotFrame({
             fill
             sizes="(min-width: 1024px) 900px, 100vw"
             className="object-cover"
+            priority={priority}
+            loading={priority ? undefined : "lazy"}
             onError={() => setErrored(true)}
           />
-        ) : Mockup ? (
-          <div className="absolute inset-0 flex flex-col">
-            <WindowChrome label={label} />
-            <div className="min-h-0 flex-1">
-              <Mockup />
-            </div>
-          </div>
         ) : (
-          <SystemInterfacePlaceholder label={label} seed={accentSeed} />
+          <AwaitingScreenshot label={label} />
         )}
         <div
           aria-hidden="true"
@@ -72,71 +63,32 @@ export default function ScreenshotFrame({
   );
 }
 
-function WindowChrome({ label }: { label: string }) {
+function AwaitingScreenshot({ label }: { label: string }) {
   return (
-    <div className="flex flex-shrink-0 items-center gap-2 border-b border-border/80 bg-bg-deep/70 px-4 py-2">
-      <span className="h-2 w-2 rounded-full bg-text-muted/30" />
-      <span className="h-2 w-2 rounded-full bg-text-muted/30" />
-      <span className="h-2 w-2 rounded-full bg-text-muted/30" />
-      <span className="ml-2 truncate font-mono text-[10px] uppercase tracking-widest text-text-muted/70">
+    <div
+      className="bg-grid absolute inset-0 flex flex-col items-center justify-center gap-3 bg-[radial-gradient(ellipse_at_top_right,rgba(119,197,138,0.06),transparent_60%)]"
+      role="img"
+      aria-label={`${label} — screenshot not yet available`}
+    >
+      <div className="flex h-10 w-10 items-center justify-center rounded-[10px] border border-border-strong text-accent-bright/70">
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          aria-hidden="true"
+        >
+          <rect x="3" y="4" width="18" height="16" rx="2" />
+          <path d="M3 15l4.5-4.5a2 2 0 0 1 2.8 0L15 15" />
+          <path d="M13.5 13.5 15.7 11.3a2 2 0 0 1 2.8 0L21 14" />
+          <circle cx="8" cy="8.5" r="1.25" />
+        </svg>
+      </div>
+      <p className="font-mono text-[11px] uppercase tracking-wide text-text-muted">
         {label}
-      </span>
-      <span className="ml-auto flex flex-shrink-0 items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-accent-bright/80">
-        <span className="h-1.5 w-1.5 rounded-full bg-accent-bright shadow-[0_0_8px_rgba(119,197,138,0.9)]" />
-        live
-      </span>
-    </div>
-  );
-}
-
-function SystemInterfacePlaceholder({
-  label,
-  seed,
-}: {
-  label: string;
-  seed: number;
-}) {
-  const bars = [62, 40, 78, 34, 55, 70, 46];
-  const rotated = bars.slice(seed % bars.length).concat(bars.slice(0, seed % bars.length));
-
-  return (
-    <div className="bg-grid absolute inset-0 flex flex-col bg-[radial-gradient(ellipse_at_top_right,rgba(119,197,138,0.08),transparent_60%)]">
-      <div className="flex items-center gap-2 border-b border-border/80 px-4 py-2.5">
-        <span className="h-2 w-2 rounded-full bg-text-muted/30" />
-        <span className="h-2 w-2 rounded-full bg-text-muted/30" />
-        <span className="h-2 w-2 rounded-full bg-text-muted/30" />
-        <span className="ml-2 font-mono text-[10px] uppercase tracking-widest text-text-muted/70">
-          {label}
-        </span>
-        <span className="ml-auto flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-accent-bright/80">
-          <span className="h-1.5 w-1.5 rounded-full bg-accent-bright shadow-[0_0_8px_rgba(119,197,138,0.9)]" />
-          live
-        </span>
-      </div>
-
-      <div className="flex flex-1 items-end gap-4 p-6 sm:p-8">
-        <div className="flex h-full flex-1 items-end gap-2 sm:gap-3">
-          {rotated.map((h, i) => (
-            <div
-              key={i}
-              className="flex-1 rounded-t-[3px] bg-gradient-to-t from-accent-primary/70 to-accent-bright/40"
-              style={{ height: `${h}%` }}
-            />
-          ))}
-        </div>
-        <div className="hidden h-full w-px bg-border sm:block" />
-        <div className="hidden flex-col justify-end gap-3 sm:flex">
-          {[0, 1, 2].map((i) => (
-            <div
-              key={i}
-              className="w-28 rounded-[8px] border border-border bg-bg-deep/60 px-3 py-2"
-            >
-              <div className="h-1.5 w-10 rounded-full bg-text-muted/25" />
-              <div className="mt-2 h-1.5 w-16 rounded-full bg-accent-bright/50" />
-            </div>
-          ))}
-        </div>
-      </div>
+      </p>
     </div>
   );
 }

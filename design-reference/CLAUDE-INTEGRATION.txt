@@ -1,0 +1,29 @@
+ROBERT PORTFOLIO - CLAUDE INTEGRATION
+
+Use the assets in this folder as the visual source of truth.
+
+BACKGROUND MAPPING
+01_hero_background.png              Home page hero
+02_about_background.png             About page / "same person, new chapter"
+03_contact_background.png           Contact page / CTA
+04_journey_background.png           Journey / career transition section
+05_section_cinematic_background.png Large atmospheric divider or project index
+06_archive_background.svg           Archive page / archive section
+07_systems_background.svg           Systems / engineering page
+12_topographic_background.svg       Repeating low-contrast section texture
+
+PROJECT / SYSTEM GRAPHICS
+04_graydragon_concept.png            Graydragon case study concept art
+07_local_ai.png                      Local AI case study
+08_homelab.png                       Homelab case study
+09_mortgage_intelligence.png         Mortgage Intelligence case study
+10_infrastructure_topology.svg       Infrastructure / network topology
+
+BRAND / UI
+02_rfs_site_mark.svg                 Main personal mark
+13_icon_home.svg through 22_icon_resume.svg
+
+IMPORTANT
+Do not replace the supplied cinematic backgrounds with CSS gradients, generic mountain SVGs,
+stock photos, or placeholder cards. Do not enlarge the PNGs. Let the browser cover/crop them.
+Use dark overlays for readability instead of altering the source files.

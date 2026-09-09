@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import SectionHeader from "@/components/SectionHeader";
-import TopologyDiagram from "@/components/TopologyDiagram";
 import NodeCard from "@/components/NodeCard";
 import { infraNodes } from "@/data/infrastructure";
 
@@ -16,7 +15,11 @@ export default function InfrastructurePage() {
       <section className="relative overflow-hidden bg-bg-deep py-20 sm:py-28">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(31,61,46,0.4),transparent_65%)]"
+          className="absolute inset-0 bg-[url('/portfolio/backgrounds/systems-background.svg')] bg-cover bg-center opacity-40"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,rgba(7,16,12,0.55)_0%,rgba(7,16,12,0.85)_100%)]"
         />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
@@ -26,8 +29,13 @@ export default function InfrastructurePage() {
             align="center"
           />
 
-          <div className="mt-16 rounded-[20px] border border-border bg-bg-raised/50 p-4 sm:p-10">
-            <TopologyDiagram />
+          <div className="mt-16 overflow-x-auto rounded-[20px] border border-border bg-bg-raised/50 p-4 sm:p-10">
+            {/* eslint-disable-next-line @next/next/no-img-element -- static vector diagram, sharp at any size */}
+            <img
+              src="/portfolio/diagrams/infrastructure-topology.svg"
+              alt="Infrastructure topology: security-core, graydragon-ai, pi4-core, and pi3b-river connected through a WireGuard mesh."
+              className="h-auto w-full min-w-[720px]"
+            />
           </div>
         </div>
       </section>

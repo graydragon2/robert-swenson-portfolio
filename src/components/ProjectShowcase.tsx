@@ -8,12 +8,22 @@ interface ProjectShowcaseProps {
   index: number;
 }
 
+const projectIcons: Record<string, string> = {
+  graydragon: "ai",
+  "home-security": "security",
+  "network-command-center": "network",
+  homelab: "server",
+  "local-ai": "ai",
+  "mortgage-intelligence": "data",
+};
+
 export default function ProjectShowcase({
   project,
   index,
 }: ProjectShowcaseProps) {
   const reversed = index % 2 === 1;
   const href = `/projects/${project.slug}`;
+  const iconName = projectIcons[project.slug];
 
   return (
     <article
@@ -28,12 +38,16 @@ export default function ProjectShowcase({
       >
         <Link href={href} className="group block">
           <ScreenshotFrame
-            alt={`${project.title} interface`}
-            label={`${project.title} · SYSTEM INTERFACE`}
+            src={project.image}
+            alt={project.imageAlt ?? `${project.title} interface`}
+            label={
+              project.image
+                ? `${project.title} · SYSTEM INTERFACE`
+                : `${project.title} · SCREENSHOT COMING SOON`
+            }
             aspect="wide"
             glow
-            accentSeed={index}
-            slug={project.slug}
+            priority={index === 0}
           />
         </Link>
       </div>
@@ -43,7 +57,15 @@ export default function ProjectShowcase({
           reversed ? "lg:order-1" : "lg:order-2"
         }`}
       >
-        <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent-bright">
+        <p className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.25em] text-accent-bright">
+          {iconName && (
+            // eslint-disable-next-line @next/next/no-img-element -- fixed small vector icon
+            <img
+              src={`/portfolio/icons/icon-${iconName}.svg`}
+              alt=""
+              className="h-4 w-4"
+            />
+          )}
           {String(index + 1).padStart(2, "0")} — {project.subtitle}
         </p>
         <h3 className="mt-3 text-3xl font-bold tracking-tight text-text-main sm:text-4xl">

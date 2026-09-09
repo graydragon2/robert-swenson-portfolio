@@ -46,6 +46,8 @@ export interface Project {
   currentState: string[];
   nextSteps: string[];
   note?: string;
+  image?: string;
+  imageAlt?: string;
 }
 
 export const projects: Project[] = [
@@ -126,7 +128,10 @@ export const projects: Project[] = [
       "Broaden automation coverage beyond email and calendar into other recurring personal-operations tasks.",
       "Continue hardening the dashboard and monitoring around the AI provider layer.",
     ],
-    note: "The system is being intentionally designed to reduce dependence on third-party AI APIs while retaining provider flexibility.",
+    note: "The system is being intentionally designed to reduce dependence on third-party AI APIs while retaining provider flexibility. Graydragon is under active, ongoing development — the interface shown is concept art representing the system's direction, not a finished production screenshot.",
+    image: "/portfolio/projects/graydragon-concept.png",
+    imageAlt:
+      "Graydragon concept interface: a personal intelligence dashboard showing daily intelligence signal, system context, and local AI status.",
   },
   {
     slug: "home-security",
@@ -371,6 +376,9 @@ export const projects: Project[] = [
       "Add capacity as AI and security workloads grow.",
       "Formalize documentation of the topology as more services are added.",
     ],
+    image: "/portfolio/projects/homelab.png",
+    imageAlt:
+      "Homelab node overview: security-core, pi4-core, pi3b-river, and graydragon-ai, each shown online with their core responsibilities.",
   },
   {
     slug: "local-ai",
@@ -438,6 +446,9 @@ export const projects: Project[] = [
       "Expand context-window handling for longer-running tasks.",
       "Continue reducing reliance on hosted providers where local inference is sufficient.",
     ],
+    image: "/portfolio/projects/local-ai.png",
+    imageAlt:
+      "Local AI Gateway: graydragon-ai node running Qwen3-8B Q3_K_L on a GTX 1080 8GB, serving local, private, GPU-accelerated inference.",
   },
   {
     slug: "mortgage-intelligence",
@@ -489,6 +500,9 @@ export const projects: Project[] = [
       "Expand the model behind threshold evaluation as more real-world data accumulates.",
       "Add longer-horizon trend tracking to support broader financial planning, not just refinance timing.",
     ],
+    image: "/portfolio/projects/mortgage-intelligence.png",
+    imageAlt:
+      "Mortgage Intelligence dashboard: 30-year rate trend line against a refinance target, with current average, target, and tracked balance.",
   },
 ];
 

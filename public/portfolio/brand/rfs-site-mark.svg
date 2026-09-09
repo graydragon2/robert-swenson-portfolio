@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+<rect width="1000" height="1000" rx="180" fill="#07100d"/>
+<g fill="none" stroke="#6fbf8b" stroke-width="22" stroke-linecap="round" stroke-linejoin="round">
+<path d="M145 650 L350 370 L470 520 L610 285 L855 650"/>
+<path d="M185 650 H815"/>
+<path d="M350 370 L610 285 M470 520 L720 495"/>
+<circle cx="350" cy="370" r="28" fill="#07100d"/>
+<circle cx="470" cy="520" r="28" fill="#07100d"/>
+<circle cx="610" cy="285" r="28" fill="#07100d"/>
+<circle cx="720" cy="495" r="28" fill="#07100d"/>
+</g>
+<text x="500" y="785" text-anchor="middle" fill="#edf3ef" font-family="Arial,sans-serif" font-weight="700" font-size="118" letter-spacing="18">RFS III</text>
+</svg>

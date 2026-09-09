@@ -16,6 +16,8 @@ export default function NotFound() {
       </p>
       <div className="mt-8 flex flex-wrap justify-center gap-4">
         <Button href="/" variant="primary">
+          {/* eslint-disable-next-line @next/next/no-img-element -- fixed small vector icon */}
+          <img src="/portfolio/icons/icon-home.svg" alt="" className="h-4 w-4" />
           Return Home
         </Button>
         <Link

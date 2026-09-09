@@ -1,0 +1,103 @@
+{
+  "purpose": "Claude-ready production graphics package for portfolio.swensondigital.com",
+  "rules": [
+    "Use these files directly. Do not recreate them with CSS.",
+    "Do not upscale raster files. They are supplied at their native generated resolution.",
+    "Use object-fit: cover for cinematic backgrounds.",
+    "Keep the cinematic dark green/gold visual language.",
+    "Do not add generic mountain SVGs or substitute placeholder artwork.",
+    "Home Security and Network Command Center may use real screenshots when available."
+  ],
+  "assets": {
+    "01_hero_background.png": {
+      "type": "raster",
+      "width": 1942,
+      "height": 809
+    },
+    "02_about_background.png": {
+      "type": "raster",
+      "width": 1942,
+      "height": 809
+    },
+    "02_rfs_site_mark.svg": {
+      "type": "vector"
+    },
+    "03_contact_background.png": {
+      "type": "raster",
+      "width": 1942,
+      "height": 809
+    },
+    "04_graydragon_concept.png": {
+      "type": "raster",
+      "width": 2400,
+      "height": 1350
+    },
+    "04_journey_background.png": {
+      "type": "raster",
+      "width": 1672,
+      "height": 941
+    },
+    "05_section_cinematic_background.png": {
+      "type": "raster",
+      "width": 1672,
+      "height": 941
+    },
+    "06_archive_background.svg": {
+      "type": "vector"
+    },
+    "07_local_ai.png": {
+      "type": "raster",
+      "width": 2400,
+      "height": 1350
+    },
+    "07_systems_background.svg": {
+      "type": "vector"
+    },
+    "08_homelab.png": {
+      "type": "raster",
+      "width": 2400,
+      "height": 1350
+    },
+    "09_mortgage_intelligence.png": {
+      "type": "raster",
+      "width": 2400,
+      "height": 1350
+    },
+    "10_infrastructure_topology.svg": {
+      "type": "vector"
+    },
+    "12_topographic_background.svg": {
+      "type": "vector"
+    },
+    "13_icon_home.svg": {
+      "type": "vector"
+    },
+    "14_icon_server.svg": {
+      "type": "vector"
+    },
+    "15_icon_ai.svg": {
+      "type": "vector"
+    },
+    "16_icon_security.svg": {
+      "type": "vector"
+    },
+    "17_icon_network.svg": {
+      "type": "vector"
+    },
+    "18_icon_data.svg": {
+      "type": "vector"
+    },
+    "19_icon_code.svg": {
+      "type": "vector"
+    },
+    "20_icon_settings.svg": {
+      "type": "vector"
+    },
+    "21_icon_contact.svg": {
+      "type": "vector"
+    },
+    "22_icon_resume.svg": {
+      "type": "vector"
+    }
+  }
+}
