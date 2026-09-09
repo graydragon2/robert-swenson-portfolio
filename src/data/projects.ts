@@ -52,6 +52,12 @@ export interface Project {
   /** "contain" letterboxes real application screenshots so no interface
    *  content is cropped; omit for artwork/concept renders that can safely fill the frame. */
   imageFit?: "cover" | "contain";
+  /** Exact document <title> for this project's page (used as-is, bypassing
+   *  the site-wide title template) and for social share cards. */
+  metaTitle?: string;
+  /** Social/SEO description for this project's page (og:description,
+   *  twitter:description, <meta name="description">). */
+  metaDescription?: string;
 }
 
 export const projects: Project[] = [
@@ -137,6 +143,9 @@ export const projects: Project[] = [
     image: "/portfolio/projects/graydragon-concept.png",
     imageAlt:
       "Graydragon concept interface: a personal intelligence dashboard showing daily intelligence signal, system context, and local AI status.",
+    metaTitle: "Graydragon Personal Intelligence System | Robert F. Swenson III",
+    metaDescription:
+      "A local-first personal intelligence and automation platform combining structured knowledge, scheduled intelligence processing, email and calendar integration, self-hosted AI, monitoring, and automated workflows.",
   },
   {
     slug: "home-security",
@@ -208,6 +217,9 @@ export const projects: Project[] = [
     imageAlt:
       "Home Security dashboard: security status HOME with automatic presence detection, 5/5 cameras online, 0 active alerts, and AI verification controls.",
     imageFit: "contain",
+    metaTitle: "Context-Aware Home Security Platform | Robert F. Swenson III",
+    metaDescription:
+      "A self-hosted security platform combining presence awareness, security modes, zones, incident correlation, trusted people and vehicles, camera monitoring, and AI-assisted verification.",
   },
   {
     slug: "network-command-center",
@@ -278,6 +290,9 @@ export const projects: Project[] = [
     imageAlt:
       "Network Command Center dashboard: network score 100/Excellent, AI-generated network analyst summary, and healthy status across internet, DNS, devices, and security.",
     imageFit: "contain",
+    metaTitle: "Home Network Command Center | Robert F. Swenson III",
+    metaDescription:
+      "A centralized interface for monitoring and managing home network infrastructure, services, devices, availability, performance, and system health.",
   },
   {
     slug: "homelab",
@@ -392,6 +407,9 @@ export const projects: Project[] = [
     image: "/portfolio/projects/homelab.png",
     imageAlt:
       "Homelab node overview: security-core, pi4-core, pi3b-river, and graydragon-ai, each shown online with their core responsibilities.",
+    metaTitle: "Homelab & Multi-Node Infrastructure | Robert F. Swenson III",
+    metaDescription:
+      "A self-hosted multi-node Linux infrastructure environment using WireGuard, Docker, KVM, monitoring, security tooling, and remote systems integration.",
   },
   {
     slug: "local-ai",
@@ -462,6 +480,9 @@ export const projects: Project[] = [
     image: "/portfolio/projects/local-ai.png",
     imageAlt:
       "Local AI Gateway: graydragon-ai node running Qwen3-8B Q3_K_L on a GTX 1080 8GB, serving local, private, GPU-accelerated inference.",
+    metaTitle: "Local AI Infrastructure | Robert F. Swenson III",
+    metaDescription:
+      "Self-hosted GPU-based AI infrastructure using llama.cpp, CUDA, Qwen, and an OpenAI-compatible API for private local inference and system integration.",
   },
   {
     slug: "mortgage-intelligence",
@@ -516,6 +537,9 @@ export const projects: Project[] = [
     image: "/portfolio/projects/mortgage-intelligence.png",
     imageAlt:
       "Mortgage Intelligence dashboard: 30-year rate trend line against a refinance target, with current average, target, and tracked balance.",
+    metaTitle: "Mortgage Intelligence & Rate Monitoring | Robert F. Swenson III",
+    metaDescription:
+      "An automated mortgage intelligence system that monitors lending conditions, tracks rate movement, and surfaces decision-relevant changes.",
   },
 ];
 

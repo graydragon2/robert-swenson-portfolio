@@ -3,7 +3,7 @@ import { Space_Grotesk, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { site } from "@/data/site";
+import { site, socialImage } from "@/data/site";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -23,13 +23,15 @@ const ibmPlexMono = IBM_Plex_Mono({
   weight: ["400", "500"],
 });
 
+const defaultTitle = `${site.name} — Systems, Automation, AI, Networking, Security`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — Systems, Automation, AI, Networking, Security`,
+    default: defaultTitle,
     template: `%s — ${site.name}`,
   },
-  description: site.tagline,
+  description: site.metaDescription,
   keywords: [
     "systems engineer",
     "network administrator",
@@ -42,17 +44,35 @@ export const metadata: Metadata = {
     "security",
   ],
   authors: [{ name: site.name }],
+  creator: site.name,
+  publisher: site.name,
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     type: "website",
     url: site.url,
-    title: `${site.name} — Systems, Automation, AI, Networking, Security`,
-    description: site.tagline,
+    title: defaultTitle,
+    description: site.metaDescription,
     siteName: site.name,
+    images: [socialImage],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — Systems, Automation, AI, Networking, Security`,
-    description: site.tagline,
+    title: defaultTitle,
+    description: site.metaDescription,
+    images: [socialImage.url],
   },
 };
 

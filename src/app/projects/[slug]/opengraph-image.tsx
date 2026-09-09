@@ -1,11 +1,25 @@
 import { ImageResponse } from "next/og";
+import { getProject, projects } from "@/data/projects";
 import { site } from "@/data/site";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = `${site.name} — ${site.descriptor}`;
+export const alt = `${site.name} — project preview`;
 
-export default function Image() {
+export function generateStaticParams() {
+  return projects.map((project) => ({ slug: project.slug }));
+}
+
+interface ImageProps {
+  params: Promise<{ slug: string }>;
+}
+
+export default async function Image({ params }: ImageProps) {
+  const { slug } = await params;
+  const project = getProject(slug);
+  const title = project?.title ?? site.name;
+  const subtitle = project?.subtitle ?? site.descriptor;
+
   return new ImageResponse(
     (
       <div
@@ -23,42 +37,36 @@ export default function Image() {
           backgroundSize: "48px 48px",
         }}
       >
-        <svg width="90" height="90" viewBox="0 0 1000 1000">
-          <rect width="1000" height="1000" rx="180" fill="#07100d" />
-          <g
-            fill="none"
-            stroke="#6fbf8b"
-            strokeWidth="22"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M145 650 L350 370 L470 520 L610 285 L855 650" />
-            <path d="M185 650 H815" />
-            <path d="M350 370 L610 285 M470 520 L720 495" />
-            <circle cx="350" cy="370" r="28" fill="#07100d" />
-            <circle cx="470" cy="520" r="28" fill="#07100d" />
-            <circle cx="610" cy="285" r="28" fill="#07100d" />
-            <circle cx="720" cy="495" r="28" fill="#07100d" />
-          </g>
-        </svg>
-
         <div
           style={{
-            marginTop: 32,
-            fontSize: 30,
+            fontSize: 26,
             color: "#77C58A",
             letterSpacing: 4,
             fontFamily: "monospace",
             display: "flex",
+            textTransform: "uppercase",
           }}
         >
-          {site.descriptor}
+          {subtitle}
         </div>
         <div
           style={{
             marginTop: 24,
-            fontSize: 64,
+            fontSize: 68,
             fontWeight: 700,
+            color: "#F2F5F3",
+            display: "flex",
+            lineHeight: 1.05,
+            maxWidth: 1000,
+          }}
+        >
+          {title}
+        </div>
+        <div
+          style={{
+            marginTop: 48,
+            fontSize: 28,
+            fontWeight: 600,
             color: "#F2F5F3",
             display: "flex",
           }}
@@ -67,14 +75,15 @@ export default function Image() {
         </div>
         <div
           style={{
-            marginTop: 28,
-            fontSize: 30,
+            marginTop: 8,
+            fontSize: 22,
             color: "#8D9C92",
-            maxWidth: 900,
+            letterSpacing: 2,
+            fontFamily: "monospace",
             display: "flex",
           }}
         >
-          {site.tagline}
+          {site.descriptor}
         </div>
       </div>
     ),

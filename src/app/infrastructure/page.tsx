@@ -2,11 +2,31 @@ import type { Metadata } from "next";
 import SectionHeader from "@/components/SectionHeader";
 import NodeCard from "@/components/NodeCard";
 import { infraNodes } from "@/data/infrastructure";
+import { socialImage } from "@/data/site";
+
+const title = "Infrastructure — Robert F. Swenson III";
+const description =
+  "The homelab, networking, and AI infrastructure behind Robert F. Swenson III's projects — four nodes connected through a private WireGuard network, with a shared monitoring layer.";
 
 export const metadata: Metadata = {
   title: "Infrastructure",
-  description:
-    "The homelab, networking, and AI infrastructure behind Robert F. Swenson III's projects — four nodes connected through a private WireGuard network, with a shared monitoring layer.",
+  description,
+  alternates: {
+    canonical: "/infrastructure",
+  },
+  openGraph: {
+    type: "website",
+    url: "/infrastructure",
+    title,
+    description,
+    images: [socialImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: [socialImage.url],
+  },
 };
 
 export default function InfrastructurePage() {

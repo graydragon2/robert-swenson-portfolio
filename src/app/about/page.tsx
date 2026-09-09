@@ -1,11 +1,31 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Button from "@/components/Button";
+import { socialImage } from "@/data/site";
+
+const title = "About — Robert F. Swenson III";
+const description =
+  "Robert F. Swenson III is a systems builder, technical problem-solver, and lifelong learner working across networking, Linux, automation, security, and AI infrastructure.";
 
 export const metadata: Metadata = {
   title: "About",
-  description:
-    "Robert F. Swenson III is a systems builder, technical problem-solver, and lifelong learner working across networking, Linux, automation, security, and AI infrastructure.",
+  description,
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    type: "website",
+    url: "/about",
+    title,
+    description,
+    images: [socialImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: [socialImage.url],
+  },
 };
 
 const questions = [

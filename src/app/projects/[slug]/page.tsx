@@ -9,6 +9,7 @@ import CaseStudyNav from "@/components/CaseStudyNav";
 import CaseStudySection from "@/components/CaseStudySection";
 import ScreenshotFrame from "@/components/ScreenshotFrame";
 import { getProject, projects } from "@/data/projects";
+import { site } from "@/data/site";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -24,9 +25,29 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) return {};
+
+  const title = project.metaTitle ?? `${project.title} | ${site.name}`;
+  const description = project.metaDescription ?? project.summary;
+  const url = `/projects/${project.slug}`;
+
   return {
-    title: project.title,
-    description: project.summary,
+    title: { absolute: title },
+    description,
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      type: "website",
+      url,
+      title,
+      description,
+      siteName: site.name,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
   };
 }
 

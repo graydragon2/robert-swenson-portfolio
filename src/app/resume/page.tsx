@@ -4,7 +4,7 @@ import Button from "@/components/Button";
 import Tag from "@/components/Tag";
 import Timeline from "@/components/Timeline";
 import { projects } from "@/data/projects";
-import { links } from "@/data/site";
+import { links, socialImage } from "@/data/site";
 import {
   currentLearning,
   education,
@@ -13,10 +13,29 @@ import {
   summary,
 } from "@/data/resume";
 
+const title = "Resume — Robert F. Swenson III";
+const description =
+  "Resume for Robert F. Swenson III — systems, networking, automation, AI infrastructure, and 20+ years of industrial operations experience.";
+
 export const metadata: Metadata = {
   title: "Resume",
-  description:
-    "Resume for Robert F. Swenson III — systems, networking, automation, AI infrastructure, and 20+ years of industrial operations experience.",
+  description,
+  alternates: {
+    canonical: "/resume",
+  },
+  openGraph: {
+    type: "website",
+    url: "/resume",
+    title,
+    description,
+    images: [socialImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: [socialImage.url],
+  },
 };
 
 export default function ResumePage() {

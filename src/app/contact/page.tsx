@@ -1,12 +1,31 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import ContactCard from "@/components/ContactCard";
-import { links } from "@/data/site";
+import { links, socialImage } from "@/data/site";
+
+const title = "Contact — Robert F. Swenson III";
+const description =
+  "Get in touch with Robert F. Swenson III about systems, networking, infrastructure, automation, security, or AI projects.";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description:
-    "Get in touch with Robert F. Swenson III about systems, networking, infrastructure, automation, security, or AI projects.",
+  description,
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    type: "website",
+    url: "/contact",
+    title,
+    description,
+    images: [socialImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: [socialImage.url],
+  },
 };
 
 function GithubIcon() {

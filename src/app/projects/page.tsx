@@ -3,11 +3,31 @@ import SectionHeader from "@/components/SectionHeader";
 import ProjectShowcase from "@/components/ProjectShowcase";
 import ProjectGrid from "@/components/ProjectGrid";
 import { getFeaturedProjects, getSecondaryProjects } from "@/data/projects";
+import { socialImage } from "@/data/site";
+
+const title = "Projects — Robert F. Swenson III";
+const description =
+  "Systems, automation, AI infrastructure, and security projects designed, built, and operated by Robert F. Swenson III.";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description:
-    "Systems, automation, AI infrastructure, and security projects designed, built, and operated by Robert F. Swenson III.",
+  description,
+  alternates: {
+    canonical: "/projects",
+  },
+  openGraph: {
+    type: "website",
+    url: "/projects",
+    title,
+    description,
+    images: [socialImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: [socialImage.url],
+  },
 };
 
 export default function ProjectsPage() {

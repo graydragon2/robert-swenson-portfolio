@@ -2,15 +2,27 @@ export const site = {
   name: "Robert F. Swenson III",
   shortName: "R. Swenson III",
   tagline: "I build systems that solve problems I actually have.",
+  // Used for global SEO/social metadata (og:description, twitter:description,
+  // default page description) — distinct from the visible hero tagline above.
+  metaDescription:
+    "Industrial operations professional and systems builder designing real-world infrastructure, automation, networking, security, monitoring, local AI, and software systems.",
   descriptor: "SYSTEMS • AUTOMATION • AI • NETWORKING • SECURITY",
-  // NOTE: update this once the site has a real production domain.
-  url: "https://robertswenson.dev",
+  url: "https://portfolio.swensondigital.com",
   heroStatement: "I build systems that solve problems I actually have.",
   heroSupport:
     "From home infrastructure to AI-powered automation, I design, deploy, and operate real-world systems that make life simpler, safer, and more capable.",
   quote: ["Real problems.", "Practical systems.", "Continuous improvement."],
   philosophy: ["BUILD", "AUTOMATE", "SECURE", "LEARN", "IMPROVE", "REPEAT"],
 } as const;
+
+// Shared fallback social-card image for pages that don't generate their own
+// (project pages use their own dynamic opengraph-image/twitter-image route).
+export const socialImage = {
+  url: "/opengraph-image",
+  width: 1200,
+  height: 630,
+  alt: `${site.name} — ${site.descriptor}`,
+};
 
 export const nav = [
   { label: "Projects", href: "/projects" },
