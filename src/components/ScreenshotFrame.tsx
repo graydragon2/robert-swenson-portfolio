@@ -25,9 +25,11 @@ const ratios: Record<NonNullable<ScreenshotFrameProps["aspect"]>, string> = {
   // Taller on mobile so real screenshots read large and legible; widens
   // into an editorial banner once there's room for it alongside copy.
   editorial: "aspect-[4/3] sm:aspect-[16/10] lg:aspect-[21/9]",
-  // Taller, closer-to-square ratio for supporting-project cards, so the
-  // artwork reads as visually dominant against a compact text block.
-  supporting: "aspect-[4/3]",
+  // Taller, closer-to-square ratio for supporting-project cards on desktop
+  // so the artwork reads as visually dominant against a compact text block;
+  // shorter and wider on mobile/tablet to avoid the artwork dominating the
+  // card's total height on phones.
+  supporting: "aspect-[16/10] lg:aspect-[4/3]",
 };
 
 export default function ScreenshotFrame({
@@ -63,7 +65,15 @@ export default function ScreenshotFrame({
             alt={alt}
             fill
             sizes="(min-width: 1024px) 900px, 100vw"
-            className={fit === "contain" ? "object-contain" : "object-cover"}
+            className={
+              // Below lg, technical diagrams/screenshots must never be
+              // cropped — object-cover on a narrow aspect ratio clips wide
+              // artwork (e.g. architecture diagrams). Desktop keeps the
+              // existing per-project fit behavior unchanged.
+              fit === "contain"
+                ? "object-contain"
+                : "object-contain lg:object-cover"
+            }
             priority={priority}
             loading={priority ? undefined : "lazy"}
             onError={() => setErrored(true)}

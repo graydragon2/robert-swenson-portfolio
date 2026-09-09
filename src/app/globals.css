@@ -52,6 +52,17 @@ body {
   scrollbar-color: rgba(119, 197, 138, 0.35) transparent;
 }
 
+/* Hides the scrollbar on an overflow-x-auto element (e.g. the mobile case-
+   study tab bar) while keeping it scrollable via touch/drag/wheel. */
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Faint architecture grid background, used sparingly via .bg-grid */
 .bg-grid {
   background-image:
