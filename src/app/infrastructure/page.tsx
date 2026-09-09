@@ -6,7 +6,7 @@ import { infraNodes } from "@/data/infrastructure";
 export const metadata: Metadata = {
   title: "Infrastructure",
   description:
-    "The homelab, networking, and AI infrastructure behind Robert F. Swenson III's projects — four nodes, a WireGuard mesh, and a shared monitoring layer.",
+    "The homelab, networking, and AI infrastructure behind Robert F. Swenson III's projects — four nodes connected through a private WireGuard network, with a shared monitoring layer.",
 };
 
 export default function InfrastructurePage() {
@@ -25,7 +25,7 @@ export default function InfrastructurePage() {
           <SectionHeader
             eyebrow="Infrastructure"
             title="A small, deliberate network"
-            description="Four nodes, one WireGuard mesh, and a shared monitoring layer. Everything here is self-hosted, self-maintained, and running for real, daily use — not a demo environment."
+            description="A small, deliberate network connecting four primary nodes through WireGuard, with shared monitoring and observability. Everything here is self-hosted, self-maintained, and running for real, daily use — not a demo environment."
             align="center"
           />
 
@@ -33,7 +33,7 @@ export default function InfrastructurePage() {
             {/* eslint-disable-next-line @next/next/no-img-element -- static vector diagram, sharp at any size */}
             <img
               src="/portfolio/diagrams/infrastructure-topology.svg"
-              alt="Infrastructure topology: security-core, graydragon-ai, pi4-core, and pi3b-river connected through a WireGuard mesh."
+              alt="Infrastructure topology: security-core, graydragon-ai, pi4-core, and pi3b-river connected through a private WireGuard network."
               className="h-auto w-full min-w-[720px]"
             />
           </div>
@@ -63,8 +63,8 @@ export default function InfrastructurePage() {
           </p>
           <p className="mt-5 text-2xl font-medium leading-relaxed text-text-main sm:text-3xl">
             Security-sensitive workloads, AI inference, and networking each
-            run on the node best suited to them — connected through a single
-            WireGuard mesh and observed through one shared Prometheus/Grafana
+            run on the node best suited to them — connected through
+            WireGuard and observed through one shared Prometheus/Grafana
             layer.
           </p>
           <p className="mt-6 text-base leading-relaxed text-text-muted">

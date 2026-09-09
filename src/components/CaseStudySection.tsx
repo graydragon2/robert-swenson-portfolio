@@ -12,7 +12,7 @@ export default function CaseStudySection({
   children,
 }: CaseStudySectionProps) {
   return (
-    <section id={id} className="scroll-mt-32 border-t border-border py-14">
+    <section id={id} className="scroll-mt-32 border-t border-border py-16 sm:py-20">
       <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent-bright">
         {label}
       </p>
@@ -21,7 +21,7 @@ export default function CaseStudySection({
           {heading}
         </h2>
       )}
-      <div className="mt-6 max-w-3xl">{children}</div>
+      <div className="mt-7 max-w-3xl">{children}</div>
     </section>
   );
 }

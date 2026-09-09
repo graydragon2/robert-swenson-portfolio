@@ -74,10 +74,18 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
                   ? `${project.title} · SYSTEM INTERFACE`
                   : `${project.title} · SCREENSHOT COMING SOON`
               }
-              aspect="cinematic"
+              aspect="editorial"
               glow
               priority
             />
+            {project.conceptArt && (
+              <p className="mt-4 flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-accent-bright">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent-bright" />
+                Concept Interface — Graydragon is actively evolving. This
+                artwork represents the intended visual direction of the
+                Personal Intelligence System.
+              </p>
+            )}
           </div>
         </div>
       </div>

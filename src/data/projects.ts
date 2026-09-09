@@ -46,6 +46,7 @@ export interface Project {
   currentState: string[];
   nextSteps: string[];
   note?: string;
+  conceptArt?: boolean;
   image?: string;
   imageAlt?: string;
 }
@@ -129,6 +130,7 @@ export const projects: Project[] = [
       "Continue hardening the dashboard and monitoring around the AI provider layer.",
     ],
     note: "The system is being intentionally designed to reduce dependence on third-party AI APIs while retaining provider flexibility. Graydragon is under active, ongoing development — the interface shown is concept art representing the system's direction, not a finished production screenshot.",
+    conceptArt: true,
     image: "/portfolio/projects/graydragon-concept.png",
     imageAlt:
       "Graydragon concept interface: a personal intelligence dashboard showing daily intelligence signal, system context, and local AI status.",

@@ -14,10 +14,10 @@ export default function Hero() {
           sizes="100vw"
           className="object-cover"
         />
-        {/* legibility scrim: darker on the left/bottom where text sits */}
-        <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(5,10,8,0.8)_0%,rgba(5,10,8,0.5)_35%,rgba(5,10,8,0.15)_62%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(5,10,8,0.6)_0%,transparent_45%)]" />
-        <div className="bg-noise absolute inset-0 opacity-60" />
+        {/* legibility scrim: darker on the left where text sits, landscape stays visible elsewhere */}
+        <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(5,10,8,0.6)_0%,rgba(5,10,8,0.32)_35%,rgba(5,10,8,0.05)_62%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(5,10,8,0.4)_0%,transparent_40%)]" />
+        <div className="bg-noise absolute inset-0 opacity-25" />
       </div>
 
       {/* vertical philosophy strip, far left edge */}

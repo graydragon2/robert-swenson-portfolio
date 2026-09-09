@@ -26,11 +26,7 @@ export default function ProjectShowcase({
   const iconName = projectIcons[project.slug];
 
   return (
-    <article
-      className={`grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-8 ${
-        reversed ? "" : ""
-      }`}
-    >
+    <article className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-10">
       <div
         className={`lg:col-span-7 ${
           reversed ? "lg:order-2" : "lg:order-1"
@@ -45,11 +41,17 @@ export default function ProjectShowcase({
                 ? `${project.title} · SYSTEM INTERFACE`
                 : `${project.title} · SCREENSHOT COMING SOON`
             }
-            aspect="wide"
+            aspect="editorial"
             glow
             priority={index === 0}
           />
         </Link>
+        {project.conceptArt && (
+          <p className="mt-3 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-accent-bright">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent-bright" />
+            Concept Interface — Active Development
+          </p>
+        )}
       </div>
 
       <div

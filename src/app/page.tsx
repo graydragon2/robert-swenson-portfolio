@@ -23,7 +23,7 @@ export default function Home() {
             description="Three platforms designed, built, and currently operated end to end — spanning personal AI infrastructure, home security, and network management."
           />
 
-          <div className="mt-20 flex flex-col gap-24 sm:gap-32">
+          <div className="mt-20 flex flex-col gap-28 sm:gap-40">
             {featured.map((project, i) => (
               <ProjectShowcase key={project.slug} project={project} index={i} />
             ))}
@@ -31,7 +31,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative flex min-h-[45vh] items-center overflow-hidden bg-bg-deep">
+      <section className="relative flex min-h-[260px] items-center overflow-hidden bg-bg-deep sm:min-h-[360px] lg:min-h-[460px]">
         <div aria-hidden="true" className="absolute inset-0">
           <Image
             src="/portfolio/backgrounds/section-divider-background.png"
@@ -40,7 +40,7 @@ export default function Home() {
             sizes="100vw"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(5,10,8,0.55)_0%,rgba(5,10,8,0.3)_40%,rgba(5,10,8,0.65)_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_65%_at_50%_50%,rgba(5,10,8,0.55)_0%,rgba(5,10,8,0.15)_75%)]" />
         </div>
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <p className="text-3xl font-medium italic leading-relaxed text-text-main sm:text-4xl lg:text-5xl">
@@ -75,7 +75,7 @@ export default function Home() {
           <SectionHeader
             eyebrow="Infrastructure"
             title="How it all connects"
-            description="Four nodes, one WireGuard mesh, and a shared monitoring layer — the physical and virtual foundation these projects run on."
+            description="Four nodes connected through a private WireGuard network, with a shared monitoring layer — the physical and virtual foundation these projects run on."
             align="center"
           />
 
@@ -83,7 +83,7 @@ export default function Home() {
             {/* eslint-disable-next-line @next/next/no-img-element -- static vector diagram, sharp at any size */}
             <img
               src="/portfolio/diagrams/infrastructure-topology.svg"
-              alt="Infrastructure topology: security-core, graydragon-ai, pi4-core, and pi3b-river connected through a WireGuard mesh."
+              alt="Infrastructure topology: security-core, graydragon-ai, pi4-core, and pi3b-river connected through a private WireGuard network."
               className="h-auto w-full min-w-[720px]"
             />
           </div>

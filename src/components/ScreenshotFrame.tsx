@@ -7,7 +7,7 @@ interface ScreenshotFrameProps {
   src?: string;
   alt: string;
   label: string;
-  aspect?: "video" | "wide" | "cinematic";
+  aspect?: "video" | "wide" | "cinematic" | "editorial";
   glow?: boolean;
   priority?: boolean;
 }
@@ -16,6 +16,9 @@ const ratios: Record<NonNullable<ScreenshotFrameProps["aspect"]>, string> = {
   video: "aspect-video",
   wide: "aspect-[21/9]",
   cinematic: "aspect-[16/8] sm:aspect-[21/9]",
+  // Taller on mobile so real screenshots read large and legible; widens
+  // into an editorial banner once there's room for it alongside copy.
+  editorial: "aspect-[4/3] sm:aspect-[16/10] lg:aspect-[21/9]",
 };
 
 export default function ScreenshotFrame({
