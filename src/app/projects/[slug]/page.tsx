@@ -141,7 +141,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
             </dl>
           </div>
 
-          <div className="mt-12 pb-14 sm:mt-14 lg:pb-16">
+          <div className="mt-12 pb-16 sm:mt-14">
             <ScreenshotFrame
               src={project.image}
               alt={project.imageAlt ?? `${project.title} interface`}
@@ -176,7 +176,6 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
           label="Overview"
           heading="System Overview"
           spacing={sectionSpacing}
-          firstSection
         >
           <p className="text-base leading-relaxed text-text-muted">
             {project.description}
