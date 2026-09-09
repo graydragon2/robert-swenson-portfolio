@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Hero from "@/components/Hero";
 import SectionHeader from "@/components/SectionHeader";
 import ProjectShowcase from "@/components/ProjectShowcase";
@@ -30,20 +31,30 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-bg-raised py-24 sm:py-32">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-[url('/portfolio/backgrounds/topographic-background.svg')] bg-cover bg-center opacity-25"
-        />
-        <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+      <section className="relative flex min-h-[45vh] items-center overflow-hidden bg-bg-deep">
+        <div aria-hidden="true" className="absolute inset-0">
+          <Image
+            src="/portfolio/backgrounds/section-divider-background.png"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(5,10,8,0.55)_0%,rgba(5,10,8,0.3)_40%,rgba(5,10,8,0.65)_100%)]" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <p className="text-3xl font-medium italic leading-relaxed text-text-main sm:text-4xl lg:text-5xl">
             {site.quote.join(" ")}
           </p>
         </div>
       </section>
 
-      <section className="bg-bg py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-bg py-20 sm:py-28">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-[url('/portfolio/backgrounds/topographic-background.svg')] bg-cover bg-center opacity-15"
+        />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             eyebrow="Additional Work"
             title="Supporting infrastructure and tooling"

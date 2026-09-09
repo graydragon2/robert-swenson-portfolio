@@ -39,11 +39,11 @@ export default function ContactPage() {
       <section className="relative flex min-h-[45vh] items-end overflow-hidden bg-bg-deep">
         <div aria-hidden="true" className="absolute inset-0">
           <Image
-            src="/portfolio/backgrounds/hero-background.png"
+            src="/portfolio/backgrounds/contact-background.png"
             alt=""
             fill
             sizes="100vw"
-            className="object-cover object-[80%_35%] [transform:scaleX(-1)]"
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(5,10,8,0.9)_0%,rgba(5,10,8,0.45)_55%,rgba(5,10,8,0.6)_100%)]" />
         </div>
