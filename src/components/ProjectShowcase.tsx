@@ -41,7 +41,7 @@ export default function ProjectShowcase({
                 ? `${project.title} · SYSTEM INTERFACE`
                 : `${project.title} · SCREENSHOT COMING SOON`
             }
-            aspect="editorial"
+            aspect={project.imageFit === "contain" ? "screenshot" : "editorial"}
             frame="artwork"
             fit={project.imageFit}
             glow

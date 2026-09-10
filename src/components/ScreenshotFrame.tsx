@@ -7,7 +7,13 @@ interface ScreenshotFrameProps {
   src?: string;
   alt: string;
   label: string;
-  aspect?: "video" | "wide" | "cinematic" | "editorial" | "supporting";
+  aspect?:
+    | "video"
+    | "wide"
+    | "cinematic"
+    | "editorial"
+    | "supporting"
+    | "screenshot";
   /** "default" keeps the bordered card treatment; "artwork" de-cards the
    *  frame (shadow + radius only) for flagship/case-study hero imagery. */
   frame?: "default" | "artwork";
@@ -32,9 +38,16 @@ const ratios: Record<NonNullable<ScreenshotFrameProps["aspect"]>, string> = {
   // Taller on mobile so real screenshots read large and legible; widens
   // into an editorial banner once there's room for it alongside copy.
   editorial: "aspect-[4/3] sm:aspect-[16/10] lg:aspect-[21/9]",
-  // Taller, closer-to-square ratio for supporting-project cards, so the
-  // artwork reads as visually dominant against a compact text block.
-  supporting: "aspect-[4/3]",
+  // Shorter/wider below lg (matches the intrinsic 16:9 shape of the
+  // supporting-project diagrams exactly, so nothing is cropped) so the
+  // artwork doesn't dominate a compact mobile card's total height;
+  // unchanged 4:3 at lg+.
+  supporting: "aspect-[16/9] lg:aspect-[4/3]",
+  // For real application screenshots (fit="contain") only — matches the
+  // screenshots' own intrinsic ~1920x892 shape below lg so object-contain
+  // has virtually no letterboxing and the capture fills nearly the whole
+  // frame; unchanged 21/9 editorial banner at lg+.
+  screenshot: "aspect-[1920/892] lg:aspect-[21/9]",
 };
 
 export default function ScreenshotFrame({
