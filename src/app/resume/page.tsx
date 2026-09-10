@@ -6,6 +6,7 @@ import Timeline from "@/components/Timeline";
 import { projects } from "@/data/projects";
 import { links, socialImage } from "@/data/site";
 import {
+  credentials,
   currentLearning,
   education,
   experience,
@@ -133,6 +134,7 @@ export default function ResumePage() {
               period: item.period,
               title: item.title,
               place: item.place,
+              description: item.description,
             }))}
           />
         </div>
@@ -169,6 +171,20 @@ export default function ResumePage() {
         </h2>
         <div className="mt-6 flex flex-wrap gap-2">
           {currentLearning.map((item) => (
+            <Tag key={item}>{item}</Tag>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-16 border-t border-border pt-12">
+        <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent-bright">
+          Credentials
+        </p>
+        <h2 className="mt-2 text-2xl font-bold text-text-main sm:text-3xl">
+          Credentials
+        </h2>
+        <div className="mt-6 flex flex-wrap gap-2">
+          {credentials.map((item) => (
             <Tag key={item}>{item}</Tag>
           ))}
         </div>

@@ -41,8 +41,7 @@ export const links = {
   email: "graydragon2@gmail.com",
   github: "https://github.com/graydragon2",
   linkedin: "https://www.linkedin.com/in/robert-swenson-733290104",
-  // TODO: point at the hosted PDF once one is produced.
-  resumePdf: null as string | null,
+  resumePdf: "/resume/Robert-F-Swenson-III-Resume.pdf",
 } as const;
 
 export const swensonDigital = {
