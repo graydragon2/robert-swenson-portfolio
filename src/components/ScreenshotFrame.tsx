@@ -44,10 +44,10 @@ const ratios: Record<NonNullable<ScreenshotFrameProps["aspect"]>, string> = {
   // unchanged 4:3 at lg+.
   supporting: "aspect-[16/9] lg:aspect-[4/3]",
   // For real application screenshots (fit="contain") only — matches the
-  // screenshots' own intrinsic ~1920x892 shape below lg so object-contain
-  // has virtually no letterboxing and the capture fills nearly the whole
-  // frame; unchanged 21/9 editorial banner at lg+.
-  screenshot: "aspect-[1920/892] lg:aspect-[21/9]",
+  // screenshots' own intrinsic 1900x892 shape (cropped of a baked-in edge
+  // artifact) below lg so object-contain has zero letterboxing and the
+  // capture fills the whole frame; unchanged 21/9 editorial banner at lg+.
+  screenshot: "aspect-[1900/892] lg:aspect-[21/9]",
 };
 
 export default function ScreenshotFrame({
