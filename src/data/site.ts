@@ -39,10 +39,8 @@ export const nav = [
 // real values once accounts exist — do not fabricate URLs elsewhere.
 export const links = {
   email: "graydragon2@gmail.com",
-  // TODO: set once a GitHub profile intended for this site exists.
-  github: null as string | null,
-  // TODO: set once a LinkedIn profile intended for this site exists.
-  linkedin: null as string | null,
+  github: "https://github.com/graydragon2",
+  linkedin: "https://www.linkedin.com/in/robert-swenson-733290104",
   // TODO: point at the hosted PDF once one is produced.
   resumePdf: null as string | null,
 } as const;

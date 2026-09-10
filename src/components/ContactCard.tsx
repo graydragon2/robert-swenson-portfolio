@@ -1,6 +1,7 @@
 interface ContactCardProps {
   label: string;
   value: string;
+  description?: string;
   href?: string;
   icon: React.ReactNode;
 }
@@ -8,6 +9,7 @@ interface ContactCardProps {
 export default function ContactCard({
   label,
   value,
+  description,
   href,
   icon,
 }: ContactCardProps) {
@@ -23,6 +25,11 @@ export default function ContactCard({
         <p className="mt-0.5 truncate text-sm font-medium text-text-main">
           {value}
         </p>
+        {description && (
+          <p className="mt-1 text-sm leading-relaxed text-text-muted">
+            {description}
+          </p>
+        )}
       </div>
     </div>
   );

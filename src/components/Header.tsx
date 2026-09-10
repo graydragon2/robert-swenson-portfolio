@@ -3,9 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { nav, site } from "@/data/site";
+import { links, nav, site } from "@/data/site";
 import MobileMenu from "@/components/MobileMenu";
 import SiteMark from "@/components/SiteMark";
+import { GithubIcon, LinkedinIcon } from "@/components/SocialIcons";
 
 export default function Header() {
   const pathname = usePathname();
@@ -43,6 +44,26 @@ export default function Header() {
               </Link>
             );
           })}
+          <div className="flex items-center gap-4 border-l border-border pl-6">
+            <a
+              href={links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub profile"
+              className="rounded-sm text-text-muted transition-colors hover:text-accent-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-bright/60 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-deep"
+            >
+              <GithubIcon />
+            </a>
+            <a
+              href={links.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn profile"
+              className="rounded-sm text-text-muted transition-colors hover:text-accent-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-bright/60 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-deep"
+            >
+              <LinkedinIcon />
+            </a>
+          </div>
           <Link
             href="/projects"
             className="rounded-[10px] border border-border px-4 py-2 font-mono text-xs uppercase tracking-wide text-text-main transition-colors hover:border-accent-bright hover:text-accent-bright"

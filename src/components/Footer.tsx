@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { nav, site } from "@/data/site";
+import { links, nav, site } from "@/data/site";
 import SiteMark from "@/components/SiteMark";
+import { GithubIcon, LinkedinIcon } from "@/components/SocialIcons";
 
 export default function Footer() {
   return (
@@ -19,7 +20,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <nav className="flex flex-wrap gap-x-6 gap-y-2">
+          <nav className="flex flex-wrap items-center gap-x-6 gap-y-2">
             {nav.map((item) => (
               <Link
                 key={item.href}
@@ -29,6 +30,26 @@ export default function Footer() {
                 {item.label}
               </Link>
             ))}
+            <div className="flex items-center gap-4 border-l border-border pl-4">
+              <a
+                href={links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub profile"
+                className="rounded-sm text-text-muted transition-colors hover:text-accent-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-bright/60 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-deep"
+              >
+                <GithubIcon />
+              </a>
+              <a
+                href={links.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn profile"
+                className="rounded-sm text-text-muted transition-colors hover:text-accent-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-bright/60 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-deep"
+              >
+                <LinkedinIcon />
+              </a>
+            </div>
           </nav>
         </div>
 
