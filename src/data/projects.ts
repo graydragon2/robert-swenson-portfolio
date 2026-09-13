@@ -143,11 +143,11 @@ export const projects: Project[] = [
       "Broaden automation coverage beyond email and calendar into other recurring personal-operations tasks.",
       "Continue hardening the dashboard and monitoring around the AI provider layer.",
     ],
-    note: "The system is being intentionally designed to reduce dependence on third-party AI APIs while retaining provider flexibility. Graydragon is under active, ongoing development — the interface shown is concept art representing the system's direction, not a finished production screenshot.",
-    conceptArt: true,
-    image: "/portfolio/projects/graydragon-concept.png",
+    note: "The system is being intentionally designed to reduce dependence on third-party AI APIs while retaining provider flexibility. Graydragon is under active, ongoing development, with new capabilities shipping regularly.",
+    image: "/portfolio/projects/graydragon-v2.png",
     imageAlt:
-      "Graydragon concept interface: a personal intelligence dashboard showing daily intelligence signal, system context, and local AI status.",
+      "Graydragon Second Brain dashboard: today-at-a-glance stats, today's agenda, AI insights and memory health, current projects, and recent activity.",
+    imageFit: "contain",
     metaTitle: "Graydragon Personal Intelligence System | Robert F. Swenson III",
     metaDescription:
       "A local-first personal intelligence and automation platform combining structured knowledge, scheduled intelligence processing, email and calendar integration, self-hosted AI, monitoring, and automated workflows.",
